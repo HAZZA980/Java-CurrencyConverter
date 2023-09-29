@@ -67,7 +67,7 @@ public class ExchangeRates {
 					defaultCurrency = "AUD";
 					break;
 				default:
-					System.out.println("Please pick a currency");
+					System.out.println("Unsupported Currency - Please Try Again");
 					break;
 				}
 
@@ -93,8 +93,8 @@ public class ExchangeRates {
 					gbpRates.GBPExchangeRates();
 					break;
 				default:
-					System.out.println("Invalid default currency");
-				}
+					System.out.println("Unsupported Currency - Please Try Again");
+					}
 			} else if (input.equals("2")) {
 				er.ExchangeCurrency();
 			} else if (input.equals("3")) {
@@ -135,8 +135,8 @@ public class ExchangeRates {
 				currencyChoice = "GBP";
 				break;
 			default:
-				System.out.println("Invalid input. Please pick a valid option.");
-			}
+				System.out.println("Unsupported Currency - Please Try Again");
+				}
 		} while (!Arrays.asList("USD", "EUR", "JPY", "AUD", "GBP").contains(currencyChoice));
 
 		System.out.println("You selected: " + currencyChoice);
@@ -167,8 +167,8 @@ public class ExchangeRates {
 					break;
 				case "5":
 				default:
-					System.out.println("Please pick an option");
-				}
+					System.out.println("Unsupported Currency - Please Try Again");
+					}
 			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("JPY")
 					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
 					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
@@ -195,8 +195,8 @@ public class ExchangeRates {
 				exchangeCurrency = "AUD";
 				break;
 			default:
-				System.out.println("Please pick an option");
-			} 
+				System.out.println("Unsupported Currency - Please Try Again");
+				} 
 			} while (!(exchangeCurrency.equals("GBP") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("JPY")
 					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
 					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
@@ -224,8 +224,8 @@ public class ExchangeRates {
 				exchangeCurrency = "AUD";
 				break;
 			default:
-				System.out.println("Please pick an option");
-			} 
+				System.out.println("Unsupported Currency - Please Try Again");
+				} 
 			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("GBP") || exchangeCurrency.equals("JPY")
 					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
 					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
@@ -252,8 +252,8 @@ public class ExchangeRates {
 				exchangeCurrency = "AUD";
 				break;
 			default:
-				System.out.println("Please pick an option");
-			} 
+				System.out.println("Unsupported Currency - Please Try Again");
+				} 
 			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("GBP")
 					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
 					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
@@ -281,7 +281,7 @@ public class ExchangeRates {
 				exchangeCurrency = "GBP";
 				break;
 			default:
-				System.out.println("Please pick an option");
+				System.out.println("Unsupported Currency - Please Try Again");
 			} 
 			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("JPY")
 					|| exchangeCurrency.equals("GBP") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
