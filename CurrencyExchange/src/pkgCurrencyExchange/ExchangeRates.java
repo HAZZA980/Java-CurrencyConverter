@@ -1,5 +1,6 @@
 package pkgCurrencyExchange;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -112,7 +113,6 @@ public class ExchangeRates {
 		do {
 			System.out.println("Select your current currency: \n1. USD ($) \n2. EUR (€) \n3. JPY (¥) \n4. AUD ($) \n5. GBP (£)");
 			currencyChoice = scanner.next().toUpperCase();
-
 			switch (currencyChoice) {
 			case "1":
 			case "USD":
@@ -145,36 +145,38 @@ public class ExchangeRates {
 		//Currency which you want
 		System.out.println("Pick desired currency: ");
 		if (currencyChoice == "GBP") {
-			System.out.println("\n1. USD ($) \n2. EUR (€) \n3. JPY (¥) \n4. AUD ($)");	
-			exchangeCurrency = scanner.next();
-			switch(exchangeCurrency) {
-			case "1":
-			case "USD":
-				exchangeCurrency = "USD";
-				break;
-			case "2":
-			case "EUR":
-				exchangeCurrency = "EUR";
-				break;
-			case "3":
-			case "JPY":
-				exchangeCurrency = "JPY";
-				break;
-			case "4":
-			case "AUD":
-				exchangeCurrency = "AUD";
-				break;
-			case "5":
-			case "GBP":
-				exchangeCurrency = "GBP";
-				break;
-			default:
-				System.out.println("Please pick an option");
-			} 
+			do {
+				System.out.println("\n1. USD ($) \n2. EUR (€) \n3. JPY (¥) \n4. AUD ($)");	
+				exchangeCurrency = scanner.next().toUpperCase();
+				switch(exchangeCurrency) {
+				case "1":
+				case "USD":
+					exchangeCurrency = "USD";
+					break;
+				case "2":
+				case "EUR":
+					exchangeCurrency = "EUR";
+					break;
+				case "3":
+				case "JPY":
+					exchangeCurrency = "JPY";
+					break;
+				case "4":
+				case "AUD":
+					exchangeCurrency = "AUD";
+					break;
+				case "5":
+				default:
+					System.out.println("Please pick an option");
+				}
+			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("JPY")
+					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
+					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
 
 		} else if (currencyChoice == "USD") {
+			do {
 			System.out.println("\n1. EUR (€) \n2. JPY (¥) \n3. GBP (£) \n4. AUD ($)");	
-			exchangeCurrency = scanner.next();
+			exchangeCurrency = scanner.next().toUpperCase();
 			switch(exchangeCurrency) {
 			case "1":
 			case "EUR":
@@ -195,10 +197,15 @@ public class ExchangeRates {
 			default:
 				System.out.println("Please pick an option");
 			} 
+			} while (!(exchangeCurrency.equals("GBP") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("JPY")
+					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
+					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
 
+			
 		} else if (currencyChoice == "EUR") {
+			do {
 			System.out.println("\n1. USD ($) \n2. GBP (£) \n3. JPY (¥) \n4. AUD ($)");	
-			exchangeCurrency = scanner.next();
+			exchangeCurrency = scanner.next().toUpperCase();
 			switch(exchangeCurrency) {
 			case "1":
 			case "USD":
@@ -219,10 +226,14 @@ public class ExchangeRates {
 			default:
 				System.out.println("Please pick an option");
 			} 
+			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("GBP") || exchangeCurrency.equals("JPY")
+					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
+					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
 
 		} else if (currencyChoice == "JPY") {
+			do {
 			System.out.println("\n1. USD ($) \n2. EUR (€) \n3. GBP (£) \n4. AUD ($)");	
-			exchangeCurrency = scanner.next();
+			exchangeCurrency = scanner.next().toUpperCase();
 			switch(exchangeCurrency) {
 			case "1":
 			case "USD":
@@ -243,10 +254,15 @@ public class ExchangeRates {
 			default:
 				System.out.println("Please pick an option");
 			} 
+			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("GBP")
+					|| exchangeCurrency.equals("AUD") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
+					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
+
 
 		} else if (currencyChoice == "AUD") {
+			do {
 			System.out.println("\n1. USD ($) \n2. EUR (€) \n3. JPY (¥) \n4. GBP (£)");	
-			exchangeCurrency = scanner.next();
+			exchangeCurrency = scanner.next().toUpperCase();
 			switch(exchangeCurrency) {
 			case "1":
 			case "USD":
@@ -267,6 +283,9 @@ public class ExchangeRates {
 			default:
 				System.out.println("Please pick an option");
 			} 
+			} while (!(exchangeCurrency.equals("USD") || exchangeCurrency.equals("EUR") || exchangeCurrency.equals("JPY")
+					|| exchangeCurrency.equals("GBP") || exchangeCurrency.equals("1") || exchangeCurrency.equals("2")
+					|| exchangeCurrency.equals("3") || exchangeCurrency.equals("4"))); 
 
 		}
 
@@ -292,79 +311,101 @@ public class ExchangeRates {
 		String amount = scanner.next();
 		double amount2 = Double.parseDouble(amount);
 
+		DecimalFormat df = new DecimalFormat("0.00");
+		
 		//GBP maths
 		if (currencyChoice == "GBP" && exchangeCurrency == "JPY") {
 			double JPYresult = amount2 * gbpRates.getJPYrate();
-			System.out.println("JPY = ¥" + JPYresult);
+			String formattedNumber = df.format(JPYresult);
+			System.out.println("JPY = ¥" + formattedNumber);
 		} else if (currencyChoice == "GBP" && exchangeCurrency == "AUD") {
 			double AUDresult = amount2 * gbpRates.getAUDrate();
-			System.out.println("AUD = $" + AUDresult);
+			String formattedNumber = df.format(AUDresult);
+			System.out.println("AUD = $" + formattedNumber);
 		} else if (currencyChoice == "GBP" && exchangeCurrency == "USD") {
 			double USDresult = amount2 * gbpRates.getUSDrate();
-			System.out.println("USD = $" + USDresult);
+			String formattedNumber = df.format(USDresult);
+			System.out.println("USD = $" + formattedNumber);
 		} else if (currencyChoice == "GBP" && exchangeCurrency == "EUR") {
 			double EURresult = amount2 * gbpRates.getEURrate();
-			System.out.println("EUR = €" + EURresult);
+			String formattedNumber = df.format(EURresult);
+			System.out.println("EUR = €" + formattedNumber);
 		}
 
 		//USDmaths
 		if (currencyChoice == "USD" && exchangeCurrency == "JPY") {
 			double JPYresult = amount2 * usdRates.getJPYrate();
-			System.out.println("JPY = ¥" + JPYresult);
+			String formattedNumber = df.format(JPYresult);
+			System.out.println("JPY = ¥" + formattedNumber);
 		} else if (currencyChoice == "USD" && exchangeCurrency == "AUD") {
 			double AUDresult = amount2 * usdRates.getAUDrate();
-			System.out.println("AUD = $" + AUDresult);
+			String formattedNumber = df.format(AUDresult);
+			System.out.println("AUD = $" + formattedNumber);
 		} else if (currencyChoice == "USD" && exchangeCurrency == "GBP") {
 			double GBPresult = amount2 * usdRates.getGBPrate();
-			System.out.println("GBP = £" + GBPresult);
+			String formattedNumber = df.format(GBPresult);
+			System.out.println("GBP = £" + formattedNumber);
 		} else if (currencyChoice == "USD" && exchangeCurrency == "EUR") {
 			double EURresult = amount2 * usdRates.getEURrate();
-			System.out.println("EUR = €" + EURresult);
+			String formattedNumber = df.format(EURresult);
+			System.out.println("EUR = €" + formattedNumber);
 		}		
 
 		//AUDmaths
 		if (currencyChoice == "AUD" && exchangeCurrency == "JPY") {
 			double JPYresult = amount2 * audRates.getJPYrate();
-			System.out.println("JPY = ¥" + JPYresult);
+			String formattedNumber = df.format(JPYresult);
+			System.out.println("JPY = ¥" + formattedNumber);
 		} else if (currencyChoice == "AUD" && exchangeCurrency == "USD") {
 			double USDresult = amount2 * audRates.getUSDrate();
-			System.out.println("USD = $" + USDresult);
+			String formattedNumber = df.format(USDresult);
+			System.out.println("USD = $" + formattedNumber);
 		} else if (currencyChoice == "AUD" && exchangeCurrency == "GBP") {
-			double USDresult = amount2 * audRates.getGBPrate();
-			System.out.println("GBP = £" + USDresult);
+			double GBPresult = amount2 * audRates.getGBPrate();
+			String formattedNumber = df.format(GBPresult);
+			System.out.println("GBP = £" + formattedNumber);
 		} else if (currencyChoice == "AUD" && exchangeCurrency == "EUR") {
 			double EURresult = amount2 * audRates.getEURrate();
-			System.out.println("EUR = €" + EURresult);
+			String formattedNumber = df.format(EURresult);
+			System.out.println("EUR = €" + formattedNumber);
 		}
 
 		//JPYmaths
 		if (currencyChoice == "JPY" && exchangeCurrency == "AUD") {
 			double AUDresult = amount2 * jpyRates.getAUDrate();
-			System.out.println("JPY = ¥" + AUDresult);
+			String formattedNumber = df.format(AUDresult);
+			System.out.println("AUD = $" + formattedNumber);
 		} else if (currencyChoice == "JPY" && exchangeCurrency == "USD") {
 			double USDresult = amount2 * jpyRates.getUSDrate();
-			System.out.println("USD = $" + USDresult);
+			String formattedNumber = df.format(USDresult);
+			System.out.println("USD = $" + formattedNumber);
 		} else if (currencyChoice == "JPY" && exchangeCurrency == "GBP") {
-			double USDresult = amount2 * jpyRates.getGBPrate();
-			System.out.println("GBP = £" + USDresult);
+			double GBPresult = amount2 * jpyRates.getGBPrate();
+			String formattedNumber = df.format(GBPresult);
+			System.out.println("GBP = £" + formattedNumber);
 		} else if (currencyChoice == "JPY" && exchangeCurrency == "EUR") {
 			double EURresult = amount2 * jpyRates.getEURrate();
-			System.out.println("EUR = €" + EURresult);
+			String formattedNumber = df.format(EURresult);
+			System.out.println("EUR = €" + formattedNumber);
 		}
 
 		//EURmaths
 		if (currencyChoice == "EUR" && exchangeCurrency == "AUD") {
 			double AUDresult = amount2 * eurRates.getAUDrate();
-			System.out.println("JPY = ¥" + AUDresult);
+			String formattedNumber = df.format(AUDresult);
+			System.out.println("JPY = ¥" + formattedNumber);
 		} else if (currencyChoice == "EUR" && exchangeCurrency == "USD") {
 			double USDresult = amount2 * eurRates.getUSDrate();
-			System.out.println("USD = $" + USDresult);
+			String formattedNumber = df.format(USDresult);
+			System.out.println("USD = $" + formattedNumber);
 		} else if (currencyChoice == "EUR" && exchangeCurrency == "GBP") {
-			double USDresult = amount2 * eurRates.getGBPrate();
-			System.out.println("GBP = £" + USDresult);
+			double GBPresult = amount2 * eurRates.getGBPrate();
+			String formattedNumber = df.format(GBPresult);
+			System.out.println("GBP = £" + formattedNumber);
 		} else if (currencyChoice == "EUR" && exchangeCurrency == "JPY") {
 			double JPYresult = amount2 * eurRates.getJPYrate();
-			System.out.println("JPY = €" + JPYresult);
+			String formattedNumber = df.format(JPYresult);
+			System.out.println("JPY = €" + formattedNumber);
 		}
 
 		System.out.println("Press any key to Continue");
